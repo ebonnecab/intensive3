@@ -16,10 +16,6 @@ hot_subreddit = subreddit.hot(limit=1000)
 #accessing top category of subreddit
 top_subreddit = subreddit.top(limit=1000)
 
-#sample code that prints submission title and id of top submission
-# for submission in subreddit.top(limit=1):
-#     print(submission.title, submission.id)
-
 # created an empty dictionary of features for top voted and hottest subreddit posts
 topics_dict = {"title": [],
                "id": [], 
@@ -65,12 +61,13 @@ dataframe = pd.DataFrame(headers_list)
 dataframe['text_list'] = text_list
 dataframe.columns = ["header", "texts"]
 dataframe["texts"] = dataframe["texts"].apply(lambda x: x.replace('\n', ''))
-dataframe.to_csv('v1.csv', index=None)
-dataframe.head()
+# dataframe.to_csv('v1.csv', index=None)
+# dataframe.head()
 
 dataframe2 = pd.DataFrame(headers_list2)
 dataframe2['text_list2'] = text_list2
 dataframe2.columns = ["header", "texts"]
 dataframe2["texts"] = dataframe["texts"].apply(lambda x: x.replace('\n', ''))
-dataframe2.to_csv('v2.csv', index=None)
-dataframe2.head()
+# dataframe2.to_csv('v2.csv', index=None)
+dataframe = dataframe.append(dataframe2)
+dataframe.to_csv('v1.csv', index=None)
