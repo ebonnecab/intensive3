@@ -11,7 +11,10 @@ subreddit = reddit.subreddit('prisonreform')
 
 
 #accessing hot category of subreddit
-hot_subreddit = subreddit.hot(limit=2)
+hot_subreddit = subreddit.hot(limit=1000)
+
+#accessing top category of subreddit
+top_subreddit = subreddit.top(limit=1000)
 
 #sample code that prints submission title and id of top submission
 # for submission in subreddit.top(limit=1):
@@ -19,30 +22,55 @@ hot_subreddit = subreddit.hot(limit=2)
 
 # created an empty dictionary of features for top voted and hottest subreddit posts
 topics_dict = {"title": [],
-               "score": [],
                "id": [], 
-               "url": [],
-               "created": [],
                "body": []}
 
-comm_list = []
-header_list = []
-i = 0
+topics_dict2 = {"title": [],
+               "id": [],
+               "body": []}
+
 #iterating through chosen features and appending to dict
 for submission in hot_subreddit:
     topics_dict["title"].append(submission.title)
-    topics_dict["id"].append(submission.id)
     topics_dict["body"].append(submission.selftext)
 
-    while topics_dict["body"]:
-        header_list.append(topics_dict["title"])
-        comment = topics_dict["body"].pop(0)
-        comm_list.append(comment)
-        
+headers_list = []
+text_list = []
 
-print(header_list, comm_list)
+for header in topics_dict["title"]:
+    headers_list.append(header)
 
-# dataframe = pd.DataFrame(topics_dict)
-# dataframe.columns = ['']
+for text in topics_dict["body"]:
+    text_list.append(text)
 
-# d = pd.read_csv(r'./v1.csv')
+
+for submission in top_subreddit:
+    topics_dict2["title"].append(submission.title)
+    topics_dict2["body"].append(submission.selftext)
+
+
+headers_list2 = []
+text_list2 = []
+i=0
+
+for header in topics_dict2["title"]:
+    headers_list2.append(header)
+
+for text in topics_dict2["body"]:
+    text_list2.append(text)
+    
+# print(text_list2)
+
+dataframe = pd.DataFrame(headers_list)
+dataframe['text_list'] = text_list
+dataframe.columns = ["header", "texts"]
+dataframe["texts"] = dataframe["texts"].apply(lambda x: x.replace('\n', ''))
+dataframe.to_csv('v1.csv', index=None)
+dataframe.head()
+
+dataframe = pd.DataFrame(headers_list2)
+dataframe['text_list2'] = text_list2
+dataframe.columns = ["header", "texts"]
+dataframe["texts"] = dataframe["texts"].apply(lambda x: x.replace('\n', ''))
+dataframe.to_csv('v2.csv', index=None)
+dataframe.head()
