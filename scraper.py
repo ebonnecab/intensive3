@@ -68,9 +68,9 @@ dataframe["texts"] = dataframe["texts"].apply(lambda x: x.replace('\n', ''))
 dataframe.to_csv('v1.csv', index=None)
 dataframe.head()
 
-dataframe = pd.DataFrame(headers_list2)
-dataframe['text_list2'] = text_list2
-dataframe.columns = ["header", "texts"]
-dataframe["texts"] = dataframe["texts"].apply(lambda x: x.replace('\n', ''))
-dataframe.to_csv('v2.csv', index=None)
-dataframe.head()
+dataframe2 = pd.DataFrame(headers_list2)
+dataframe2['text_list2'] = text_list2
+dataframe2.columns = ["header", "texts"]
+dataframe2["texts"] = dataframe["texts"].apply(lambda x: x.replace('\n', ''))
+dataframe2.to_csv('v2.csv', index=None)
+dataframe2.head()
