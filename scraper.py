@@ -32,33 +32,15 @@ i = 0
 for submission in hot_subreddit:
     topics_dict["title"].append(submission.title)
     topics_dict["id"].append(submission.id)
-    # topics_dict["url"].append(submission.url)
-    # topics_dict["comms_num"].append(submission.num_comments)
-    # topics_dict["comments"].append(submission.comments)
-    # topics_dict["created"].append(submission.created)
     topics_dict["body"].append(submission.selftext)
 
     while topics_dict["body"]:
         header_list.append(topics_dict["title"])
         comment = topics_dict["body"].pop(0)
         comm_list.append(comment)
-        t = []
-        t.extend(topics_dict["body"].replies)
-        while t:
-            header_list.append(topics_dict["title"])
-            reply = t.pop(0)
-            comm_list.append(reply)
+        
 
-# print(topics_dict)
 print(header_list, comm_list)
-# for submissions in top_subreddit:
-#     topics_dict2["title"].append(submission.title)
-#     topics_dict2["score"].append(submission.score)
-#     topics_dict2["id"].append(submission.id)
-#     topics_dict2["url"].append(submission.url)
-#     topics_dict2["comms_num"].append(submission.num_comments)
-#     topics_dict2["created"].append(submission.created)
-#     topics_dict2["body"].append(submission.selftext)
 
 # dataframe = pd.DataFrame(topics_dict)
 # dataframe.columns = ['']
