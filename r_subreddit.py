@@ -1,5 +1,7 @@
 #! usr/bin/env python3
 
+import re #help clean up text
+
 import praw #pkg that connects to reddit api
 
 #using python reddit api wrapper to make requests
@@ -67,8 +69,11 @@ dataframe2.columns = ["header", "texts"]
 dataframe2["texts"] = dataframe["texts"].apply(lambda x: x.replace('\n', ''))
 
 dataframe = dataframe.append(dataframe2)
+dataframe = re.sub("\d+", " ", dataframe["texts"])
 
-dataframe.ropna()
+dataframe.head()
+
+# dataframe.ropna()
 
 # dataframe.to_csv('v1.csv', index=None)
 
