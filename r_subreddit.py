@@ -1,7 +1,6 @@
 #! usr/bin/env python3
 
 import praw #pkg that connects to reddit api
-import pandas as pd #pkg that handles/formats the data
 
 #using python reddit api wrapper to make requests
 reddit = praw.Reddit(user_agent='project-1 (by /u/ebonnecab)',client_id='QvAdTaUsIGkukg', client_secret="6ZT2FBooftzF3wA3I7d5XEzIayI", username='ebonnecab', password='Makeschool1!')
@@ -54,20 +53,22 @@ for header in topics_dict2["title"]:
 
 for text in topics_dict2["body"]:
     text_list2.append(text)
-    
-# print(text_list2)
+
+import pandas as pd #pkg that handles/formats the data
 
 dataframe = pd.DataFrame(headers_list)
 dataframe['text_list'] = text_list
 dataframe.columns = ["header", "texts"]
 dataframe["texts"] = dataframe["texts"].apply(lambda x: x.replace('\n', ''))
-# dataframe.to_csv('v1.csv', index=None)
-# dataframe.head()
 
 dataframe2 = pd.DataFrame(headers_list2)
 dataframe2['text_list2'] = text_list2
 dataframe2.columns = ["header", "texts"]
 dataframe2["texts"] = dataframe["texts"].apply(lambda x: x.replace('\n', ''))
-# dataframe2.to_csv('v2.csv', index=None)
+
 dataframe = dataframe.append(dataframe2)
-dataframe.to_csv('v1.csv', index=None)
+
+dataframe.ropna()
+
+# dataframe.to_csv('v1.csv', index=None)
+
