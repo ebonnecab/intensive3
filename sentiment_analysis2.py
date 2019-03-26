@@ -27,6 +27,7 @@ def sentiment():
     words = [w for w in words if not w in stop_words] #remove stop words from corpus
     # word_blob = ' '.join(words) #joined list to string to use text blob library
     
+    #alternative method for getting sentiment values
     sentiment_objects = [TextBlob(w) for w in words]
     sentiment_objects[0].polarity, sentiment_objects[0]
 
@@ -39,7 +40,7 @@ def sentiment():
     # Create dataframe containing the polarity value and tweet text
     sentiment_df = pd.DataFrame(sentiment_values, columns=["polarity", "word"])
 
-    # Remove polarity values equal to zero
+    # Remove polarity values equal to zero for visual purposes
     sentiment_df = sentiment_df[sentiment_df.polarity != 0]
     fig, ax = plt.subplots(figsize=(8, 6))
 
