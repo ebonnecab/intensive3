@@ -22,26 +22,23 @@ def sentiment():
     words = [word for word in stripped if word.isalpha()] #remove non-alphabetic tokens
     stop_words = set(stopwords.words('english'))
     words = [w for w in words if not w in stop_words] #remove stop words from corpus
-    word_blob = ' '.join(words) #joined list to string to use text blob library
+    # word_blob = ' '.join(words) #joined list to string to use text blob library
+    
+    sentiment_objects = [TextBlob(w) for w in words]
+    sentiment_objects[0].polarity, sentiment_objects[0]
 
-    blob = TextBlob(word_blob) #create blob object
+    # Create list of polarity valuesx and tweet text
+    sentiment_values = [[w.sentiment.polarity, str(w)] for w in sentiment_objects]
+    sentiment_values[0]
 
-    for word in blob.split(): #iterate over each word in string
-        print(word)
-        analysis = TextBlob(word) 
-        print(analysis.sentiment) # determines polarity and subjectivity scores of each word
-        
-        #categorizing words based upon sentiment value between -1 and 1
-        if analysis.sentiment[0]>0: 
-            print('Positive')
-        elif analysis.sentiment[0]<0:
-            print ('Negative')
-        else:
-            print ('Neutral')
-        
+    import pandas as pd #pkg that handles/formats the data
+
+    # Create dataframe containing the polarity value and tweet text
+    sentiment_df = pd.DataFrame(sentiment_values, columns=["polarity", "word"])
+
+    #Write datafram to csv
+    sentiment_df.to_csv('v3.csv', index=None)
 
 
 if __name__ == '__main__': 
     sentiment()
-
-

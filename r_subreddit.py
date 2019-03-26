@@ -3,7 +3,7 @@
 import praw #pkg that connects to reddit api
 
 #using python reddit api wrapper to make requests
-reddit = praw.Reddit(user_agent='project-1 (by /u/ebonnecab)',client_id='QvAdTaUsIGkukg', client_secret="6ZT2FBooftzF3wA3I7d5XEzIayI", username='ebonnecab', password='Makeschool1!')
+reddit = praw.Reddit(config.user,client_id='QvAdTaUsIGkukg', client_secret="6ZT2FBooftzF3wA3I7d5XEzIayI", username='ebonnecab', password='Makeschool1!')
 
 # accessing prison reform subreddit
 subreddit = reddit.subreddit('prisonreform')
@@ -56,7 +56,7 @@ for text in topics_dict2["body"]:
 
 import pandas as pd #pkg that handles/formats the data
 
-#convert dicts to panda data frame
+#convert list to panda data frame
 dataframe = pd.DataFrame(headers_list)
 dataframe['texts'] = text_list
 dataframe.columns = ["header", "texts"]
