@@ -3,6 +3,9 @@
 from nltk import word_tokenize
 import string
 from nltk.corpus import stopwords
+
+#pkg to plot data
+import matplotlib.pyplot as plt
    
 #import textblob library for simple NLP tasks
 from textblob import TextBlob
@@ -36,8 +39,19 @@ def sentiment():
     # Create dataframe containing the polarity value and tweet text
     sentiment_df = pd.DataFrame(sentiment_values, columns=["polarity", "word"])
 
-    #Write datafram to csv
-    sentiment_df.to_csv('v3.csv', index=None)
+    # Remove polarity values equal to zero
+    sentiment_df = sentiment_df[sentiment_df.polarity != 0]
+    fig, ax = plt.subplots(figsize=(8, 6))
+
+    # Plot histogram with break at zero
+    sentiment_df.hist(bins=[-1, -0.75, -0.5, -0.25, 0.0, 0.25, 0.5, 0.75, 1],
+    ax=ax, color="purple")
+
+    plt.title("Sentiments from Prison Reform Subreddit")
+    plt.show()
+
+    # #Write datafram to csv
+    # sentiment_df.to_csv('v3.csv', index=None)
 
 
 if __name__ == '__main__': 
