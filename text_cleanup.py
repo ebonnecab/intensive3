@@ -7,5 +7,7 @@ file.close()
 #split text into word tokens
 from nltk import word_tokenize
 tokens = word_tokenize(text)
-print(tokens[:100])
 
+#remove non-alphabetic tokens
+words = [word for word in tokens if word.isalpha()]
+print(words[:100])
