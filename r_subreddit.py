@@ -24,29 +24,28 @@ topics_dict2 = {"title": [],
                "id": [],
                "body": []}
 
-#iterating through chosen features and appending to dict
+#iterating through chosen features of hot and top subreddit to append to dict
 for submission in hot_subreddit:
     topics_dict["title"].append(submission.title)
     topics_dict["body"].append(submission.selftext)
-
-headers_list = []
-text_list = []
-
-for header in topics_dict["title"]:
-    headers_list.append(header)
-
-for text in topics_dict["body"]:
-    text_list.append(text)
-
 
 for submission in top_subreddit:
     topics_dict2["title"].append(submission.title)
     topics_dict2["body"].append(submission.selftext)
 
+#created empty lists for headers and the text from each post
+headers_list = []
+text_list = []
 
 headers_list2 = []
 text_list2 = []
-i=0
+
+#iterating through dict to append to list
+for header in topics_dict["title"]:
+    headers_list.append(header)
+
+for text in topics_dict["body"]:
+    text_list.append(text)
 
 for header in topics_dict2["title"]:
     headers_list2.append(header)
@@ -57,6 +56,7 @@ for text in topics_dict2["body"]:
 
 import pandas as pd #pkg that handles/formats the data
 
+#convert dicts to panda data frame
 dataframe = pd.DataFrame(headers_list)
 dataframe['texts'] = text_list
 dataframe.columns = ["header", "texts"]
@@ -68,4 +68,6 @@ dataframe2.columns = ["header", "texts"]
 dataframe2["texts"] = dataframe2["texts"].apply(lambda x: x.replace('\n', ''))
 
 dataframe = dataframe.append(dataframe2)
+
+#Write datafram to csv
 dataframe.to_csv('v1.csv', index=None)
