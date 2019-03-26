@@ -24,13 +24,26 @@ from nltk.corpus import stopwords
 stop_words = set(stopwords.words('english'))
 words = [w for w in words if not w in stop_words]
 
+#joined list to string to use text blob library
+word_blob = ' '.join(words)
 
+from textblob import TextBlob
+
+blob = TextBlob(word_blob)
+
+print(blob.sentiment)
+
+# for ngram in blob.ngrams(2):
+#     print (ngram)
 #using pandas to write tokens to new csv file
-import pandas as pd 
-dataframe = pd.DataFrame(words)
-dataframe.columns=["text"]
-dataframe["text"] = dataframe["text"].apply(lambda x: x.replace('\n', ''))
-dataframe.to_csv('v2.csv', index=None)
+# import pandas as pd 
+# dataframe = pd.DataFrame(words)
+# dataframe.columns=["text"]
+# dataframe["text"] = dataframe["text"].apply(lambda x: x.replace('\n', ''))
+# dataframe.to_csv('v2.csv', index=None)
 
 
+# print(blob)
+
+# print(blob)
 
