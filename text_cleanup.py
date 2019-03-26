@@ -31,7 +31,17 @@ from textblob import TextBlob
 
 blob = TextBlob(word_blob)
 
-print(blob.sentiment)
+for word in blob.split():
+    print(word)
+    analysis = TextBlob(word)
+    print(analysis.sentiment)
+    if analysis.sentiment[0]>0:
+        print('Positive')
+    elif analysis.sentiment[0]<0:
+       print ('Negative')
+    else:
+       print ('Neutral')
+
 
 # for ngram in blob.ngrams(2):
 #     print (ngram)
@@ -41,9 +51,3 @@ print(blob.sentiment)
 # dataframe.columns=["text"]
 # dataframe["text"] = dataframe["text"].apply(lambda x: x.replace('\n', ''))
 # dataframe.to_csv('v2.csv', index=None)
-
-
-# print(blob)
-
-# print(blob)
-
