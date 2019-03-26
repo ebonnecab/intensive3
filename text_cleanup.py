@@ -4,7 +4,8 @@ file = open(filename, 'rt')
 text = file.read()
 file.close()
 
-#split text into sentences
-from nltk import sent_tokenize
-sentences = sent_tokenize(text)
-print(sentences[0])
+#split text into word tokens
+from nltk import word_tokenize
+tokens = word_tokenize(text)
+print(tokens[:100])
+
