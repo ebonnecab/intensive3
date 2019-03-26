@@ -1,7 +1,5 @@
 #! usr/bin/env python3
 
-import re #help clean up text
-
 import praw #pkg that connects to reddit api
 
 #using python reddit api wrapper to make requests
@@ -56,24 +54,18 @@ for header in topics_dict2["title"]:
 for text in topics_dict2["body"]:
     text_list2.append(text)
 
+
 import pandas as pd #pkg that handles/formats the data
 
 dataframe = pd.DataFrame(headers_list)
-dataframe['text_list'] = text_list
+dataframe['texts'] = text_list
 dataframe.columns = ["header", "texts"]
 dataframe["texts"] = dataframe["texts"].apply(lambda x: x.replace('\n', ''))
 
 dataframe2 = pd.DataFrame(headers_list2)
-dataframe2['text_list2'] = text_list2
+dataframe2['texts'] = text_list2
 dataframe2.columns = ["header", "texts"]
-dataframe2["texts"] = dataframe["texts"].apply(lambda x: x.replace('\n', ''))
+dataframe2["texts"] = dataframe2["texts"].apply(lambda x: x.replace('\n', ''))
 
 dataframe = dataframe.append(dataframe2)
-dataframe = re.sub("\d+", " ", dataframe["texts"])
-
-dataframe.head()
-
-# dataframe.ropna()
-
-# dataframe.to_csv('v1.csv', index=None)
-
+dataframe.to_csv('v1.csv', index=None)
