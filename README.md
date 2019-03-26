@@ -136,6 +136,41 @@ for word in blob.split(): #iterate over each word in string
         else:
             print ('Neutral')
 ```
+
+### Alternative Method to Conduct Sentiment Analysis and Plot Data
+I wanted to show a visual representation of results and write them to a csv file so I used an alt method in sentiment_analysis2.py. The code is the same until the last step shown above.
+
+#### Extra Packages needed
+```Python
+#pkg to plot data
+import matplotlib.pyplot as plt
+```
+#### The last step uses Textblob package and Matplotlib package to conduct sentiment analysis and plot results
+```Python
+#alternative method for getting sentiment values
+    sentiment_objects = [TextBlob(w) for w in words]
+    sentiment_objects[0].polarity, sentiment_objects[0]
+
+    # Create list of polarity valuesx and tweet text
+    sentiment_values = [[w.sentiment.polarity, str(w)] for w in sentiment_objects]
+    sentiment_values[0]
+
+    import pandas as pd #pkg that handles/formats the data
+
+    # Create dataframe containing the polarity value and tweet text
+    sentiment_df = pd.DataFrame(sentiment_values, columns=["polarity", "word"])
+
+    # Remove polarity values equal to zero for visual purposes
+    sentiment_df = sentiment_df[sentiment_df.polarity != 0]
+    fig, ax = plt.subplots(figsize=(8, 6))
+
+    # Plot histogram with break at zero
+    sentiment_df.hist(bins=[-1, -0.75, -0.5, -0.25, 0.0, 0.25, 0.5, 0.75, 1],
+    ax=ax, color="purple")
+
+    plt.title("Sentiments from Prison Reform Subreddit")
+    plt.show()
+ ```
 Run in terminal to view Results! :)
 ### Plans for future versions
 * Expand for a more nuanced sentiment analysis
