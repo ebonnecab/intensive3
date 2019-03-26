@@ -121,3 +121,18 @@ def sentiment():
 
     blob = TextBlob(word_blob) #create blob object
  ```
+#### The last step uses the Textblob package to conduct sentiment analysis on word tokens
+```Python
+for word in blob.split(): #iterate over each word in string
+        print(word)
+        analysis = TextBlob(word) 
+        print(analysis.sentiment) # determines polarity and subjectivity scores of each word
+        
+        #categorizing words based upon sentiment value between -1 and 1
+        if analysis.sentiment[0]>0: 
+            print('Positive')
+        elif analysis.sentiment[0]<0:
+            print ('Negative')
+        else:
+            print ('Neutral')
+```
