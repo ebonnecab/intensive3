@@ -154,3 +154,4 @@ All the tutorials and repositories that helped me build this program
 * https://www.nltk.org/
 * http://www.storybench.org/how-to-scrape-reddit-with-python/
 * https://learndatasci.com/tutorials/python-pandas-tutorial-complete-introduction-for-beginners/
+* https://monkeylearn.com/sentiment-analysis/
