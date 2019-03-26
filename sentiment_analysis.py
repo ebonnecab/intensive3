@@ -3,6 +3,12 @@
 from nltk import word_tokenize
 import string
 from nltk.corpus import stopwords
+   
+#import textblob library for simple NLP tasks
+from textblob import TextBlob
+
+import pandas as pd #pkg that handles/formats the data
+
 
 #function for sentiment analysis
 def sentiment():
@@ -20,25 +26,25 @@ def sentiment():
     stop_words = set(stopwords.words('english'))
     words = [w for w in words if not w in stop_words] #remove stop words from corpus
     word_blob = ' '.join(words) #joined list to string to use text blob library
-    
+
     blob = TextBlob(word_blob) #create blob object
+
     for word in blob.split(): #iterate over each word in string
         print(word)
         analysis = TextBlob(word) 
         print(analysis.sentiment) # determines polarity and subjectivity scores of each word
+        
+        #categorizing words based upon sentiment value between -1 and 1
         if analysis.sentiment[0]>0: 
             print('Positive')
         elif analysis.sentiment[0]<0:
             print ('Negative')
         else:
             print ('Neutral')
-    return
-
-   
-#import textblob library for simple NLP tasks
-from textblob import TextBlob
+        
 
 
 if __name__ == '__main__': 
     sentiment()
+
 
