@@ -182,7 +182,7 @@ Run in your fav text editor to see results :). Feel free to experiment with diff
 * Compare data across different corpus's
 
 ### Acknowledgements
-All the tutorials and repositories that helped me build this program
+All the tutorials, documentation, and repositories that helped me build this program
 * https://machinelearningmastery.com/clean-text-machine-learning-python/
 * https://medium.freecodecamp.org/how-to-build-a-twitter-sentiments-analyzer-in-python-using-textblob-948e1e8aae14
 * https://medium.com/@rahulvaish/textblob-and-sentiment-analysis-python-a687e9fabe96
@@ -193,3 +193,4 @@ All the tutorials and repositories that helped me build this program
 * http://www.storybench.org/how-to-scrape-reddit-with-python/
 * https://learndatasci.com/tutorials/python-pandas-tutorial-complete-introduction-for-beginners/
 * https://monkeylearn.com/sentiment-analysis/
+* https://matplotlib.org/users/installing.html
