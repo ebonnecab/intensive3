@@ -1,16 +1,10 @@
-#load data file
-# def load_file():
-#     filename = './v1.csv'
-#     file = open(filename, 'rt')
-#     text = file.read()
-#     file.close()
-#     return text
 
 #split text into word tokens
 from nltk import word_tokenize
 import string
 from nltk.corpus import stopwords
 
+#function for sentiment analysis
 def sentiment():
     #load data file
     filename = './v1.csv'
@@ -48,12 +42,3 @@ from textblob import TextBlob
 if __name__ == '__main__': 
     sentiment()
 
-# for ngram in blob.ngrams(2):
-#     print (ngram)
-
-#using pandas to write tokens to new csv file
-# import pandas as pd 
-# dataframe = pd.DataFrame(words)
-# dataframe.columns=["text"]
-# dataframe["text"] = dataframe["text"].apply(lambda x: x.replace('\n', ''))
-# dataframe.to_csv('v2.csv', index=None)
