@@ -20,3 +20,23 @@ subreddit = reddit.subreddit('prisonreform')
 hot_subreddit = subreddit.hot(limit=1000)
 top_subreddit = subreddit.top(limit=1000)
 ```
+### Create an empty dictionary of features for Subreddit posts
+```Python
+topics_dict = {"title": [],
+               "id": [], 
+               "body": []}
+
+topics_dict2 = {"title": [],
+               "id": [],
+               "body": []}
+ ```
+ ### Iterate through chosen features of hot and top subreddit to append to dict
+ ```Python
+ for submission in hot_subreddit:
+    topics_dict["title"].append(submission.title)
+    topics_dict["body"].append(submission.selftext)
+
+for submission in top_subreddit:
+    topics_dict2["title"].append(submission.title)
+    topics_dict2["body"].append(submission.selftext)
+```
