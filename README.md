@@ -40,3 +40,23 @@ for submission in top_subreddit:
     topics_dict2["title"].append(submission.title)
     topics_dict2["body"].append(submission.selftext)
 ```
+### Create an empty list for headers and text and iterate through dict to append to lists
+```Python
+headers_list = []
+text_list = []
+
+headers_list2 = []
+text_list2 = []
+
+for header in topics_dict["title"]:
+    headers_list.append(header)
+
+for text in topics_dict["body"]:
+    text_list.append(text)
+
+for header in topics_dict2["title"]:
+    headers_list2.append(header)
+
+for text in topics_dict2["body"]:
+    text_list2.append(text)
+```
