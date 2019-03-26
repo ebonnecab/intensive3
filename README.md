@@ -172,6 +172,9 @@ import matplotlib.pyplot as plt
     plt.show()
  ```
 Run in terminal to view Results! :)
+
+### Sentiment Analysis on Prison Reform Subreddit
+![alt text](https://github.com/ebonnecab/intensive3/blob/master/graphs/V1_graph.png)
 ### Plans for future versions
 * Expand for a more nuanced sentiment analysis
 * Use R to show visualization of data
