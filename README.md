@@ -136,3 +136,21 @@ for word in blob.split(): #iterate over each word in string
         else:
             print ('Neutral')
 ```
+Run in terminal to view Results! :)
+### Plans for future versions
+* Expand for a more nuanced sentiment analysis
+* Use R to show visualization of data
+* Refactor code
+* Compare data across different corpus's
+
+### Acknowledgements
+All the tutorials and repositories that helped me build this program
+* https://machinelearningmastery.com/clean-text-machine-learning-python/
+* https://medium.freecodecamp.org/how-to-build-a-twitter-sentiments-analyzer-in-python-using-textblob-948e1e8aae14
+* https://medium.com/@rahulvaish/textblob-and-sentiment-analysis-python-a687e9fabe96
+* https://www.earthdatascience.org/courses/earth-analytics-python/using-apis-natural-language-processing-twitter/analyze-tweet-sentiments-in-python/
+* https://github.com/aleszu/reddit-sentiment-analysis/blob/master/r_subreddit.py
+* https://medium.com/@plog397/webscraping-reddit-python-reddit-api-wrapper-praw-tutorial-for-windows-a9106397d75e
+* https://www.nltk.org/
+* http://www.storybench.org/how-to-scrape-reddit-with-python/
+* https://learndatasci.com/tutorials/python-pandas-tutorial-complete-introduction-for-beginners/
