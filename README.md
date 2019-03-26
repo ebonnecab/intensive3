@@ -9,6 +9,8 @@
 * Natural Language Toolkit
 * Textblob library
 
+## Part 1: Get Corpus from r/prisonreform
+
 ### Use Reddit API Wrapper to make requests
 Use Reddit Documentation to create an account and build an application with their API using the request below
 ``` Python
@@ -59,4 +61,24 @@ for header in topics_dict2["title"]:
 
 for text in topics_dict2["body"]:
     text_list2.append(text)
+```
+### Import pandas package to handle/format data and convert list to panda data frame
+```Python
+import pandas as pd
+
+dataframe = pd.DataFrame(headers_list)
+dataframe['texts'] = text_list
+dataframe.columns = ["header", "texts"]
+dataframe["texts"] = dataframe["texts"].apply(lambda x: x.replace('\n', ''))
+
+dataframe2 = pd.DataFrame(headers_list2)
+dataframe2['texts'] = text_list2
+dataframe2.columns = ["header", "texts"]
+dataframe2["texts"] = dataframe2["texts"].apply(lambda x: x.replace('\n', ''))
+
+dataframe = dataframe.append(dataframe2)
+```
+### Write Dataframe to CSV for analysis
+``` Python
+dataframe.to_csv('v1.csv', index=None)
 ```
