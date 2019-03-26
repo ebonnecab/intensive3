@@ -96,3 +96,28 @@ from nltk.corpus import stopwords
 ```Python
 from textblob import TextBlob
 ```
+
+### Sentiment Analysis Function
+I wrapped this script into one big function but I plan to split into smaller functions to make code more modular.
+#### The first part of the function loads in the csv file
+```Python
+def sentiment():
+    #load data file
+    filename = './v1.csv'
+    file = open(filename, 'rt')
+    text = file.read()
+    file.close()
+```
+#### The next step tokenizes the corpus by stripping away extraneous/non-alphabetical characters, stop words, and joining list to a string to use in text blob library
+```Python
+    tokens = word_tokenize(text) #split text into word tokens
+    tokens = [word.lower() for word in tokens] #converts tokens to lowercase   
+    table = str.maketrans('', '', string.punctuation) #removes punctuation from each word
+    stripped = [w.translate(table) for w in tokens]
+    words = [word for word in stripped if word.isalpha()] #remove non-alphabetic tokens
+    stop_words = set(stopwords.words('english'))
+    words = [w for w in words if not w in stop_words] #remove stop words from corpus
+    word_blob = ' '.join(words) #joined list to string to use text blob library
+
+    blob = TextBlob(word_blob) #create blob object
+ ```
