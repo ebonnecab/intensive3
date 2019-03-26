@@ -1,5 +1,0 @@
-user_agent = "project-1 (by /u/ebonnecab"
-client_id = "QvAdTaUsIGkukg"
-client_secret= "6ZT2FBooftzF3wA3I7d5XEzIayI"
-username= "ebonnecab"
-password= "Makeschool1!"
