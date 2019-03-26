@@ -82,3 +82,17 @@ dataframe = dataframe.append(dataframe2)
 ``` Python
 dataframe.to_csv('v1.csv', index=None)
 ```
+At this point you should have a CSV file filled with text and headers from the subreddit posts. Before we can begin analyzing for sentiment we need to clean the text and split it into word tokens.
+## Part Two: Tokenize Text and Do Sentiment Analysis
+
+### Load Packages to Split Text into Word Tokens using NLTK (Natural Language Toolkit)
+```Python
+from nltk import word_tokenize
+import string
+from nltk.corpus import stopwords
+```
+
+### Import Textblob Library for simple NLP(Natural Language Processing) tasks
+```Python
+from textblob import TextBlob
+```
