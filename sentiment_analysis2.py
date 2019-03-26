@@ -25,7 +25,6 @@ def sentiment():
     words = [word for word in stripped if word.isalpha()] #remove non-alphabetic tokens
     stop_words = set(stopwords.words('english'))
     words = [w for w in words if not w in stop_words] #remove stop words from corpus
-    # word_blob = ' '.join(words) #joined list to string to use text blob library
     
     #alternative method for getting sentiment values
     sentiment_objects = [TextBlob(w) for w in words]
