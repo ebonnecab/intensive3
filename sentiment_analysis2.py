@@ -36,7 +36,7 @@ def sentiment():
 
     import pandas as pd #pkg that handles/formats the data
 
-    # Create dataframe containing the polarity value and tweet text
+    # Create dataframe containing the polarity value and words
     sentiment_df = pd.DataFrame(sentiment_values, columns=["polarity", "word"])
 
     # Remove polarity values equal to zero for visual purposes
