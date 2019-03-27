@@ -151,7 +151,7 @@ import matplotlib.pyplot as plt
     sentiment_objects = [TextBlob(w) for w in words]
     sentiment_objects[0].polarity, sentiment_objects[0]
 
-    # Create list of polarity valuesx and tweet text
+    # Create list of polarity valuesx and words
     sentiment_values = [[w.sentiment.polarity, str(w)] for w in sentiment_objects]
     sentiment_values[0]
 
