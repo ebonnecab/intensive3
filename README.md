@@ -4,7 +4,6 @@
 * Python 3
 * IDE (Interactive Development Environment)
 * PRAW (Python Reddit API Wrapper)
-* Pandas
 * A reddit account
 * Natural Language Toolkit
 * Textblob library
@@ -51,27 +50,16 @@ def get_text(topics_dict):
     
     return corpus
 ```
-### Import pandas package to handle/format data and convert list to panda data frame
+### Converted Corpus to Text File for Analysis
 ```Python
-import pandas as pd
+def write_data(file, corpus):
+    with open(file, 'w+') as f:
+        f.write('\n Corpus\n')
+        for post in corpus:
+            f.write(post + "|")
 
-dataframe = pd.DataFrame(headers_list)
-dataframe['texts'] = text_list
-dataframe.columns = ["header", "texts"]
-dataframe["texts"] = dataframe["texts"].apply(lambda x: x.replace('\n', ''))
-
-dataframe2 = pd.DataFrame(headers_list2)
-dataframe2['texts'] = text_list2
-dataframe2.columns = ["header", "texts"]
-dataframe2["texts"] = dataframe2["texts"].apply(lambda x: x.replace('\n', ''))
-
-dataframe = dataframe.append(dataframe2)
 ```
-### Write Dataframe to CSV for analysis
-``` Python
-dataframe.to_csv('v1.csv', index=None)
-```
-At this point you should have a CSV file filled with text and headers from the subreddit posts. Before we can begin analyzing for sentiment we need to clean the text and split it into word tokens.
+At this point you should have a txt file filled with posts from the subreddit. Before we can begin analyzing for sentiment we need to clean the text and split it into word tokens.
 ## Part Two: Tokenize Text and Do Sentiment Analysis
 
 ### Load Packages to Split Text into Word Tokens using NLTK (Natural Language Toolkit)
