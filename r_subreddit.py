@@ -20,38 +20,30 @@ def create_dict(hot_subreddit):
     topics_dict = {"title": [],
                    "id": [], 
                    "body": []}  
-                   
-#iterating through chosen features of hot subreddit to append to dict
+
+#iterating through chosen features of hot subreddit to append body of text to dict
     for submission in hot_subreddit:
-        topics_dict["title"].append(submission.title)
         topics_dict["body"].append(submission.selftext)
 
     return topics_dict
 
-# #created empty lists for headers and the text from each post
-# def create_list(topics_dict):
-#     headers_list = []
-#     text_list = []
+def get_text(topics_dict):
+
+#created empty lists for the text from each post
+    corpus = []
+
+#iterating through dict to append to list
+    for text in topics_dict["body"]:
+        corpus.append(text)
+    
+    return corpus
 
 if __name__ == '__main__':
 
     hot_reddit = get_subreddit()
     topics_dict = create_dict(hot_reddit)
-    print(topics_dict)
-
-
-# #iterating through dict to append to list
-# for header in topics_dict["title"]:
-#     headers_list.append(header)
-
-# for text in topics_dict["body"]:
-#     text_list.append(text)
-
-# for header in topics_dict2["title"]:
-#     headers_list2.append(header)
-
-# for text in topics_dict2["body"]:
-#     text_list2.append(text)
+    corpus = get_text(topics_dict)
+    print(corpus)
 
 
 # import pandas as pd #pkg that handles/formats the data
