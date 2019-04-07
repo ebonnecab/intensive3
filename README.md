@@ -11,19 +11,17 @@
 
 ## Part 1: Get Submissions from r/prisonreform
 
-### Use Reddit API Wrapper to make requests
+### Use Reddit API Wrapper to Make Request and Access Top Prison Reform Subreddit posts
 Use Reddit Documentation to create an account and build an application with their API using the request below
 ``` Python
 def get_subreddit():
     import praw #pkg that connects to reddit api
     reddit = praw.Reddit(config.user,client_id='xxxx', client_secret="xxxx", username='xxxx', password='xxxx')
+    subreddit = reddit.subreddit('prisonreform')
+    hot_subreddit = subreddit.hot(limit=1000)
+    return hot_subreddit
 ```
-### Access Top and Hottest Prison Reform Subreddit posts
-```Python
-subreddit = reddit.subreddit('prisonreform')
-hot_subreddit = subreddit.hot(limit=1000)
-top_subreddit = subreddit.top(limit=1000)
-```
+
 ### Create an empty dictionary of features for Subreddit posts
 ```Python
 topics_dict = {"title": [],
