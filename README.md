@@ -9,12 +9,14 @@
 * Natural Language Toolkit
 * Textblob library
 
-## Part 1: Get Corpus from r/prisonreform
+## Part 1: Get Submissions from r/prisonreform
 
 ### Use Reddit API Wrapper to make requests
 Use Reddit Documentation to create an account and build an application with their API using the request below
 ``` Python
-reddit = praw.Reddit(config.user,client_id='xxxx', client_secret="xxxx", username='xxxx', password='xxxx')
+def get_subreddit():
+    import praw #pkg that connects to reddit api
+    reddit = praw.Reddit(config.user,client_id='xxxx', client_secret="xxxx", username='xxxx', password='xxxx')
 ```
 ### Access Top and Hottest Prison Reform Subreddit posts
 ```Python
