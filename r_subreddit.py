@@ -14,7 +14,7 @@ def get_subreddit():
 
     return hot_subreddit
 
-# created an empty dictionary of features for subreddit posts
+# created a dictionary of features for subreddit posts
 def create_dict(hot_subreddit):
 
     topics_dict = {"title": [],
