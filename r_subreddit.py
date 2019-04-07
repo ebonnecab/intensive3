@@ -53,3 +53,5 @@ if __name__ == '__main__':
     corpus = get_text(topics_dict)
     write_data('corpus.txt', corpus)
 
+
+
