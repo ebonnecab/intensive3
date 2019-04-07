@@ -9,58 +9,47 @@
 * Natural Language Toolkit
 * Textblob library
 
-## Part 1: Get Corpus from r/prisonreform
+## Part 1: Get Submissions from r/prisonreform
 
-### Use Reddit API Wrapper to make requests
+### Use Reddit API Wrapper to Make Request and Access Top Prison Reform Subreddit posts
 Use Reddit Documentation to create an account and build an application with their API using the request below
 ``` Python
-reddit = praw.Reddit(config.user,client_id='xxxx', client_secret="xxxx", username='xxxx', password='xxxx')
+def get_subreddit():
+    import praw #pkg that connects to reddit api
+    reddit = praw.Reddit(config.user,client_id='xxxx', client_secret="xxxx", username='xxxx', password='xxxx')
+    subreddit = reddit.subreddit('prisonreform')
+    hot_subreddit = subreddit.hot(limit=1000)
+    return hot_subreddit
 ```
-### Access Top and Hottest Prison Reform Subreddit posts
-```Python
-subreddit = reddit.subreddit('prisonreform')
-hot_subreddit = subreddit.hot(limit=1000)
-top_subreddit = subreddit.top(limit=1000)
-```
-### Create an empty dictionary of features for Subreddit posts
-```Python
-topics_dict = {"title": [],
-               "id": [], 
-               "body": []}
 
-topics_dict2 = {"title": [],
-               "id": [],
-               "body": []}
+### Create a Dictionary of Features for Subreddit posts
+```Python
+def create_dict(hot_subreddit):
+
+    topics_dict = {"title": [],
+                   "id": [], 
+                   "body": []}  
+
+#iterating through chosen features of hot subreddit to append body of text to dict
+    for submission in hot_subreddit:
+        topics_dict["body"].append(submission.selftext)
+
+    return topics_dict
+
  ```
- ### Iterate through chosen features of hot and top subreddit to append to dict
- ```Python
- for submission in hot_subreddit:
-    topics_dict["title"].append(submission.title)
-    topics_dict["body"].append(submission.selftext)
 
-for submission in top_subreddit:
-    topics_dict2["title"].append(submission.title)
-    topics_dict2["body"].append(submission.selftext)
-```
-### Create an empty list for headers and text and iterate through dict to append to lists
+### Create a List from Topics_Dict to get a Corpus
 ```Python
-headers_list = []
-text_list = []
+def get_text(topics_dict):
 
-headers_list2 = []
-text_list2 = []
+#created empty lists for the text from each post
+    corpus = []
 
-for header in topics_dict["title"]:
-    headers_list.append(header)
-
-for text in topics_dict["body"]:
-    text_list.append(text)
-
-for header in topics_dict2["title"]:
-    headers_list2.append(header)
-
-for text in topics_dict2["body"]:
-    text_list2.append(text)
+#iterating through dict to append to list
+    for text in topics_dict["body"]:
+        corpus.append(text)
+    
+    return corpus
 ```
 ### Import pandas package to handle/format data and convert list to panda data frame
 ```Python
