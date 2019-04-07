@@ -37,16 +37,7 @@ def create_dict(hot_subreddit):
     return topics_dict
 
  ```
- ### Iterate through chosen features of hot and top subreddit to append to dict
- ```Python
- for submission in hot_subreddit:
-    topics_dict["title"].append(submission.title)
-    topics_dict["body"].append(submission.selftext)
 
-for submission in top_subreddit:
-    topics_dict2["title"].append(submission.title)
-    topics_dict2["body"].append(submission.selftext)
-```
 ### Create an empty list for headers and text and iterate through dict to append to lists
 ```Python
 headers_list = []
