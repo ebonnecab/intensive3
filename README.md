@@ -38,25 +38,18 @@ def create_dict(hot_subreddit):
 
  ```
 
-### Create an empty list for headers and text and iterate through dict to append to lists
+### Create a List from Topics_Dict to get a Corpus
 ```Python
-headers_list = []
-text_list = []
+def get_text(topics_dict):
 
-headers_list2 = []
-text_list2 = []
+#created empty lists for the text from each post
+    corpus = []
 
-for header in topics_dict["title"]:
-    headers_list.append(header)
-
-for text in topics_dict["body"]:
-    text_list.append(text)
-
-for header in topics_dict2["title"]:
-    headers_list2.append(header)
-
-for text in topics_dict2["body"]:
-    text_list2.append(text)
+#iterating through dict to append to list
+    for text in topics_dict["body"]:
+        corpus.append(text)
+    
+    return corpus
 ```
 ### Import pandas package to handle/format data and convert list to panda data frame
 ```Python
