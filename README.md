@@ -22,15 +22,20 @@ def get_subreddit():
     return hot_subreddit
 ```
 
-### Create an empty dictionary of features for Subreddit posts
+### Create a Dictionary of Features for Subreddit posts
 ```Python
-topics_dict = {"title": [],
-               "id": [], 
-               "body": []}
+def create_dict(hot_subreddit):
 
-topics_dict2 = {"title": [],
-               "id": [],
-               "body": []}
+    topics_dict = {"title": [],
+                   "id": [], 
+                   "body": []}  
+
+#iterating through chosen features of hot subreddit to append body of text to dict
+    for submission in hot_subreddit:
+        topics_dict["body"].append(submission.selftext)
+
+    return topics_dict
+
  ```
  ### Iterate through chosen features of hot and top subreddit to append to dict
  ```Python
