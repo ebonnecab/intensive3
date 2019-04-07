@@ -38,28 +38,18 @@ def get_text(topics_dict):
     
     return corpus
 
+def write_data(file, corpus):
+    with open(file, 'w+') as f:
+        f.write('\n Corpus\n')
+        for post in corpus:
+            f.write(post + "|")
+
+
+
 if __name__ == '__main__':
 
     hot_reddit = get_subreddit()
     topics_dict = create_dict(hot_reddit)
     corpus = get_text(topics_dict)
-    print(corpus)
+    write_data('corpus.txt', corpus)
 
-
-# import pandas as pd #pkg that handles/formats the data
-
-# #convert list to panda data frame
-# dataframe = pd.DataFrame(headers_list)
-# dataframe['texts'] = text_list
-# dataframe.columns = ["header", "texts"]
-# dataframe["texts"] = dataframe["texts"].apply(lambda x: x.replace('\n', ''))
-
-# dataframe2 = pd.DataFrame(headers_list2)
-# dataframe2['texts'] = text_list2
-# dataframe2.columns = ["header", "texts"]
-# dataframe2["texts"] = dataframe2["texts"].apply(lambda x: x.replace('\n', ''))
-
-# dataframe = dataframe.append(dataframe2)
-
-# #Write datafram to csv
-# dataframe.to_csv('v1.csv', index=None)
