@@ -24,7 +24,15 @@ def get_tokens(text):
 
     return words
 
+def stop_words(words):
+    stop_words = set(stopwords.words('english'))
+    #remove stop words from corpus
+    clean_words = [w for w in words if not w in stop_words]
+    
+    return clean_words
+
 if __name__ == '__main__':
     text = read_file('corpus.txt')
     tokens = get_tokens(text)
-    print(tokens)
+    clean_tokens = stop_words(tokens)
+    print(clean_tokens)
