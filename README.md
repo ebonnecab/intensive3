@@ -97,7 +97,7 @@ def get_tokens(text):
     return words
 
 ```
-#### This function removes useless and extraneous words known as "stop words
+#### This function removes useless and extraneous words known as "stop words"
 ```Python
     def stop_words(words):
     stop_words = set(stopwords.words('english'))
