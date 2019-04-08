@@ -4,6 +4,7 @@
 * Python 3
 * IDE (Interactive Development Environment)
 * PRAW (Python Reddit API Wrapper)
+* Pandas library
 * A reddit account
 * Natural Language Toolkit
 * Textblob library
