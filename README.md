@@ -69,49 +69,67 @@ import string
 from nltk.corpus import stopwords
 ```
 
-### Import Textblob Library for simple NLP(Natural Language Processing) tasks
+### Read in Text File
 ```Python
-from textblob import TextBlob
+def read_file(file):
+    with open(file) as f:  # access file
+        text = f.read()
+    
+    return text
+
 ```
 
-### Sentiment Analysis Function
-I wrapped this script into one big function but I plan to split into smaller functions to make code more modular.
-#### The first part of the function loads in the csv file
+### Tokenize and Clean the Text
+I am using the Natural language toolkit to clean the text for better data analysis.
+#### The first function tokenizes the words and strips them of punctuation and non-alphabetic characters
 ```Python
-def sentiment():
-    #load data file
-    filename = './v1.csv'
-    file = open(filename, 'rt')
-    text = file.read()
-    file.close()
-```
-#### The next step tokenizes the corpus by stripping away extraneous/non-alphabetical characters, stop words, and joining list to a string to use in text blob library
-```Python
-    tokens = word_tokenize(text) #split text into word tokens
-    tokens = [word.lower() for word in tokens] #converts tokens to lowercase   
-    table = str.maketrans('', '', string.punctuation) #removes punctuation from each word
+def get_tokens(text):
+    #split text into word tokens
+    tokens = word_tokenize(text)
+    #converts tokens to lowercase
+    tokens = [word.lower() for word in tokens]
+    #removes punctuation from each word
+    table = str.maketrans('', '', string.punctuation) 
     stripped = [w.translate(table) for w in tokens]
-    words = [word for word in stripped if word.isalpha()] #remove non-alphabetic tokens
-    stop_words = set(stopwords.words('english'))
-    words = [w for w in words if not w in stop_words] #remove stop words from corpus
-    word_blob = ' '.join(words) #joined list to string to use text blob library
+    #remove non-alphabetic tokens
+    words = [word for word in stripped if word.isalpha()]
 
-    blob = TextBlob(word_blob) #create blob object
+    return words
+
+```
+#### This function removes useless and extraneous words known as "stop words
+```Python
+    def stop_words(words):
+    stop_words = set(stopwords.words('english'))
+    #remove stop words from corpus
+    clean_words = [w for w in words if not w in stop_words]
+    
+    return clean_words
  ```
 #### The last step uses the Textblob package to conduct sentiment analysis on word tokens
 ```Python
-for word in blob.split(): #iterate over each word in string
+#import textblob library for simple NLP tasks
+from textblob import TextBlob
+
+def get_sentiment(clean_words):
+     #joined list to string to use text blob library
+    word_blob = ' '.join(clean_words)
+    blob = TextBlob(word_blob) #create blob object
+    for word in blob.split():
         print(word)
-        analysis = TextBlob(word) 
-        print(analysis.sentiment) # determines polarity and subjectivity scores of each word
-        
-        #categorizing words based upon sentiment value between -1 and 1
+        analysis = TextBlob(word)
+        # determines polarity and subjectivity scores of each word
+        print(analysis.sentiment)
+
+    #categorizing words based upon sentiment value between -1 and 1
         if analysis.sentiment[0]>0: 
             print('Positive')
         elif analysis.sentiment[0]<0:
             print ('Negative')
         else:
             print ('Neutral')
+        
+
 ```
 
 ### Alternative Method to Conduct Sentiment Analysis and Plot Data
