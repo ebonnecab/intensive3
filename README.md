@@ -166,6 +166,9 @@ def get_sentiment(clean_words):
 
     plt.title("Sentiments from Prison Reform Subreddit")
     plt.show()
+    
+    #Write dataframe to csv
+    # sentiment_df.to_csv('csv-files/v4.csv', index=None)
  ```
 Run in your fav text editor to see results :). Feel free to experiment with different subreddits!
 
