@@ -138,14 +138,11 @@ I wanted to show a visual representation of results and write them to a csv file
 
 #### Extra Packages needed
 ```Python
-#pkg to plot data
-import matplotlib.pyplot as plt
+import pandas as pd #pkg that handles/formats the data
+import matplotlib.pyplot as plt #pkg to plot data
 ```
 #### The last step uses Textblob package and Matplotlib package to conduct sentiment analysis and plot results
 ```Python
-import pandas as pd #pkg that handles/formats the data
-import matplotlib.pyplot as plt #pkg to plot data
-
 def get_sentiment(clean_words):
     
     #alternative method for getting sentiment values
