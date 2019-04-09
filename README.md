@@ -170,7 +170,7 @@ def get_sentiment(clean_words):
 Run in your fav text editor to see results :). Feel free to experiment with different subreddits!
 
 ### Sentiment Analysis on Prison Reform Subreddit
-![alt text](https://github.com/ebonnecab/intensive3/blob/master/graphs/V2.png)
+![alt text](https://github.com/ebonnecab/intensive3/blob/master/graphs/v2.png)
 ### Plans for future versions
 * Expand for a more nuanced sentiment analysis
 * Use R or Javascript to show visualization of data
