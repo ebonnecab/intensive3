@@ -4,6 +4,7 @@
 * Python 3
 * IDE (Interactive Development Environment)
 * PRAW (Python Reddit API Wrapper)
+* Pandas library
 * A reddit account
 * Natural Language Toolkit
 * Textblob library
@@ -97,7 +98,7 @@ def get_tokens(text):
     return words
 
 ```
-#### This function removes useless and extraneous words known as "stop words
+#### This function removes useless and extraneous words known as "stop words"
 ```Python
     def stop_words(words):
     stop_words = set(stopwords.words('english'))
