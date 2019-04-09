@@ -143,17 +143,20 @@ import matplotlib.pyplot as plt
 ```
 #### The last step uses Textblob package and Matplotlib package to conduct sentiment analysis and plot results
 ```Python
-#alternative method for getting sentiment values
-    sentiment_objects = [TextBlob(w) for w in words]
+import pandas as pd #pkg that handles/formats the data
+import matplotlib.pyplot as plt #pkg to plot data
+
+def get_sentiment(clean_words):
+    
+    #alternative method for getting sentiment values
+    sentiment_objects = [TextBlob(w) for w in clean_words]
     sentiment_objects[0].polarity, sentiment_objects[0]
 
-    # Create list of polarity valuesx and words
+    # Create list of polarity valuesx and tweet text
     sentiment_values = [[w.sentiment.polarity, str(w)] for w in sentiment_objects]
     sentiment_values[0]
 
-    import pandas as pd #pkg that handles/formats the data
-
-    # Create dataframe containing the polarity value and tweet text
+    # Create dataframe containing the polarity value and words
     sentiment_df = pd.DataFrame(sentiment_values, columns=["polarity", "word"])
 
     # Remove polarity values equal to zero for visual purposes
