@@ -1,4 +1,5 @@
 #! usr/bin/env python3
+# Still need to write tests for these functions
 
 #using python reddit api wrapper to make requests
 def get_subreddit():
