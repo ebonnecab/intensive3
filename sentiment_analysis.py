@@ -1,5 +1,7 @@
 #! usr/bin/env python3
 
+#still need to write tests! 
+
 #split text into word tokens
 from nltk import word_tokenize
 import string
