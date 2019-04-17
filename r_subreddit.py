@@ -39,6 +39,7 @@ def get_text(topics_dict):
     
     return corpus
 
+#opens a new file and writes each post from corpus to that file
 def write_data(file, corpus):
     with open(file, 'w+') as f:
         f.write('\n Corpus\n')
