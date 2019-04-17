@@ -5,7 +5,7 @@
 def get_subreddit():
     import praw #pkg that connects to reddit api
     
-    reddit = praw.Reddit(client_id='QvAdTaUsIGkukg', client_secret="6ZT2FBooftzF3wA3I7d5XEzIayI", user_agent='USERAGENT', username='ebonnecab', password='Makeschool1!')
+    reddit = praw.Reddit(client_id='xxxxx', client_secret="xxxxx", user_agent='USERAGENT', username='xxxx', password='xxxx')
 
     # accessing prison reform subreddit
     subreddit = reddit.subreddit('prisonreform')
